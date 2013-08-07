@@ -1,0 +1,44 @@
+From 665584952478441e3fe8e70f32d2f2ee11f6ac27 Mon Sep 17 00:00:00 2001
+From: Manuel Francisco Naranjo <naranjo.manuel@gmail.com>
+Date: Mon, 29 Jul 2013 12:23:20 -0300
+Subject: [PATCH] Revert "Turn off BLE, GATT, and SMP of Bluetooth stack"
+
+This reverts commit 67b7e3ac6f697f37b709a403dbe82d7ec6a83e55.
+
+Enable BLE, GATT and SMP for Nexus 7 2012 grouper and tilapia
+
+Change-Id: I640b3b76a341efc98d1ed69b1dc60425cdc0070b
+---
+ bluetooth/bdroid_buildcfg.h | 4 +---
+ device-common.mk            | 3 ++-
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/bluetooth/bdroid_buildcfg.h b/bluetooth/bdroid_buildcfg.h
+index 3a0fbe1..aa61dba 100644
+--- a/bluetooth/bdroid_buildcfg.h
++++ b/bluetooth/bdroid_buildcfg.h
+@@ -27,7 +27,5 @@
+ #define BTIF_HF_SERVICES (BTA_HSP_SERVICE_MASK)
+ #define BTIF_HF_SERVICE_NAMES  { BTIF_HSAG_SERVICE_NAME }
+ #define PAN_NAP_DISABLED TRUE
+-#define BLE_INCLUDED FALSE
+-#define BTA_GATT_INCLUDED FALSE
+-#define SMP_INCLUDED FALSE
++
+ #endif
+diff --git a/device-common.mk b/device-common.mk
+index d422688..c1c39ec 100644
+--- a/device-common.mk
++++ b/device-common.mk
+@@ -58,7 +58,8 @@ PRODUCT_COPY_FILES += \
+     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
++    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
++    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
+
+ PRODUCT_COPY_FILES += \
+     device/asus/grouper/elan-touchscreen.idc:system/usr/idc/elan-touchscreen.idc \
+--
+1.8.1.6
